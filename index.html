@@ -1,82 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A welcoming, inclusive space to connect, discover community, and find your people.">
-<title>OpenCircle — Find your people</title>
-<style>
-:root{--ink:#241b35;--muted:#756d82;--purple:#6d45c5;--violet:#9b6be8;--pink:#ef79a8;--cream:#fbf8ff;--line:#eee8f5;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream)}
-a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
-header{height:76px;display:flex;align-items:center;background:#ffffffed;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;font-size:22px;letter-spacing:-1px;display:flex;align-items:center;gap:10px}.brand-mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:white;font-size:18px}
-.links{display:flex;gap:28px;color:#61586f;font-size:14px;font-weight:650}.links a:hover{color:var(--purple)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 20px;background:var(--purple);color:white;font-weight:750;font-size:14px;cursor:pointer;box-shadow:0 8px 22px #6d45c52b}.nav-cta:hover,.btn:hover{background:#5834aa;transform:translateY(-1px)}
-.hero{padding:78px 0 64px;overflow:hidden;background:radial-gradient(ellipse at 80% 15%,#f5ddec 0,transparent 34%),radial-gradient(ellipse at 10% 80%,#e8ddff 0,transparent 38%),linear-gradient(120deg,#fcf9ff,#fff8fb)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #e8dcf7;background:#ffffffb8;color:#6845a7;padding:8px 13px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
-h1{font-size:clamp(44px,6vw,70px);line-height:1.02;letter-spacing:-3.5px;margin:22px 0 20px;max-width:620px}h1 span{background:linear-gradient(100deg,var(--purple),#d65e9b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:550px;margin:0 0 28px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn.secondary{background:white;color:var(--purple);border:1px solid #e8def4;box-shadow:none}.micro{font-size:12px;color:#82798d;margin-top:18px}
-.visual{position:relative;min-height:400px;display:grid;place-items:center}.orb{position:absolute;width:330px;height:330px;border-radius:50%;background:linear-gradient(145deg,#e6d7ff,#fbd9e9);filter:blur(1px)}
-.panel{position:relative;width:min(390px,100%);background:#ffffffdf;border:1px solid #fff;border-radius:25px;padding:23px;box-shadow:0 28px 80px #4d32631c;backdrop-filter:blur(12px);transform:rotate(2deg)}
-.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.avatar-stack{display:flex}.avatar{width:34px;height:34px;border-radius:50%;border:3px solid white;margin-left:-8px;display:grid;place-items:center;font-size:15px;background:#f2e5ff}.avatar:first-child{margin-left:0}.online{font-size:11px;color:#3c9b72;font-weight:800}
-.panel h3{margin:0 0 6px;font-size:20px}.panel p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
-.mini-card{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;gap:12px;background:white}.mini-icon{width:42px;height:42px;border-radius:13px;background:#f1e9ff;display:grid;place-items:center;font-size:20px}.mini-card strong{display:block;font-size:13px}.mini-card small{color:var(--muted);font-size:11px}
-.float{position:absolute;background:white;padding:12px 16px;border-radius:15px;box-shadow:0 14px 35px #39264d20;font-size:12px;font-weight:800}.float.one{top:48px;right:-5px}.float.two{bottom:42px;left:-10px}
-section{padding:78px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 38px}.kicker{color:var(--purple);font-weight:850;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.section-head h2{font-size:clamp(30px,4vw,43px);letter-spacing:-1.7px;margin:12px 0}.section-head p{color:var(--muted);line-height:1.7;margin:0}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid var(--line);border-radius:21px;padding:24px;box-shadow:0 8px 28px #39264d08}.card-icon{width:48px;height:48px;border-radius:15px;background:#f3ebff;display:grid;place-items:center;font-size:23px;margin-bottom:17px}.card h3{font-size:18px;margin:0 0 8px}.card p{font-size:14px;color:var(--muted);line-height:1.65;margin:0}
-.connect{background:#fff}.social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.social{border:1px solid var(--line);border-radius:18px;padding:20px;background:white;display:flex;align-items:center;gap:12px;transition:.2s}.social:hover{transform:translateY(-3px);border-color:#d7c5f2;box-shadow:0 12px 28px #39264d0c}.social .sicon{width:42px;height:42px;border-radius:13px;background:#f3edfa;display:grid;place-items:center;font-weight:900;font-size:18px}.social strong{display:block;font-size:14px}.social small{font-size:11px;color:var(--muted)}
-.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.event{display:flex;gap:18px;align-items:center}.event-date{width:62px;height:68px;flex:0 0 62px;border-radius:15px;background:linear-gradient(145deg,#f0e7ff,#ffe9f2);display:grid;place-content:center;text-align:center}.event-date b{font-size:21px}.event-date small{font-size:10px;font-weight:800;color:var(--purple);letter-spacing:.08em}.event h3{margin:0 0 5px;font-size:16px}.event p{margin:0;color:var(--muted);font-size:12px}
-.banner{background:linear-gradient(115deg,#5633a6,#8b55c8 58%,#cf6e9f);color:white;border-radius:28px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:25px}.banner h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1.4px;margin:0 0 9px}.banner p{color:#f2eaff;margin:0;line-height:1.6}.banner .btn{background:white;color:#6841b2;box-shadow:none;white-space:nowrap}
-footer{padding:34px 0;border-top:1px solid var(--line);background:white}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:12px}.foot strong{color:var(--ink)}
-.notice{font-size:11px;color:#81788d;text-align:center;padding:15px 0 25px}
-.modal{display:none;position:fixed;inset:0;background:#21152e99;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{width:min(460px,100%);background:white;border-radius:22px;padding:28px;box-shadow:0 25px 80px #0003}.modal-box h3{margin:0 0 8px;font-size:23px}.modal-box p{color:var(--muted);font-size:14px;line-height:1.6}.close{float:right;border:0;background:#f4eff9;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer}.field{width:100%;border:1px solid #e6deee;border-radius:12px;padding:13px;margin:7px 0 12px;font:inherit}.modal-box label{font-size:12px;font-weight:800}.modal-box .btn{width:100%;margin-top:8px}
-@media(max-width:800px){.links{display:none}.hero-grid{grid-template-columns:1fr;gap:20px}.hero{padding-top:55px}.visual{min-height:360px}.grid3{grid-template-columns:1fr}.social-grid{grid-template-columns:1fr 1fr}.event-grid{grid-template-columns:1fr}.banner{padding:32px;display:block}.banner .btn{margin-top:20px}.foot{display:block;text-align:center}.foot div+div{margin-top:10px}}
-@media(max-width:480px){.wrap{width:min(100% - 28px,1120px)}h1{letter-spacing:-2.5px}.social-grid{grid-template-columns:1fr}.panel{padding:18px}.float.one{right:0}.float.two{left:0}.hero-actions .btn{width:100%}.banner{border-radius:20px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10051f">
+  <meta name="description" content="Desires & Pleasures DP — a welcoming, respectful community for open-minded adults. Connect directly through WhatsApp.">
+  <title>Desires &amp; Pleasures DP | Open-Minded Connections</title>
+  <style>
+    :root{--bg:#090512;--panel:#160b27;--panel2:#211035;--pink:#ff28b8;--purple:#a84cff;--cyan:#18d9ff;--gold:#ffd52f;--green:#63ff72;--white:#fff9ff;--muted:#d8c9e8;--line:rgba(255,255,255,.13);--glow:0 0 18px rgba(255,40,184,.35),0 0 38px rgba(168,76,255,.18)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:radial-gradient(ellipse at 12% 8%,rgba(168,76,255,.17),transparent 32%),radial-gradient(ellipse at 90% 34%,rgba(0,206,255,.11),transparent 30%),var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6;overflow-x:hidden}a{color:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font-size:.76rem;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.eyebrow:before,.eyebrow:after{content:"";height:1px;width:26px;background:linear-gradient(90deg,var(--pink),var(--cyan))}h1,h2,h3,p{margin-top:0}h1,h2{line-height:1.04;letter-spacing:-.04em}h1{font-size:clamp(2.7rem,7vw,5.7rem);margin:18px 0 22px;font-weight:950}h1 .gradient,h2 .gradient{background:linear-gradient(100deg,var(--gold),#fff,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(255,40,184,.18)}h2{font-size:clamp(2.1rem,4.5vw,3.6rem);margin-bottom:18px}h3{font-size:1.2rem}.lead{font-size:clamp(1.05rem,2vw,1.25rem);color:#eee2fa;max-width:660px}.muted{color:var(--muted)}.section{padding:100px 0;position:relative}.section-head{max-width:720px;margin-bottom:42px}.section-head p{color:var(--muted);font-size:1.08rem}.neon-rule{height:3px;width:90px;border-radius:9px;background:linear-gradient(90deg,var(--pink),var(--gold),var(--cyan));box-shadow:0 0 16px var(--pink);margin:25px 0}
+    header{position:sticky;top:0;z-index:20;background:rgba(9,5,18,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:950;letter-spacing:-.04em;text-decoration:none;font-size:1.13rem;line-height:1.1}.brand b{display:block;color:var(--pink);font-size:.72rem;letter-spacing:.23em;margin-top:5px}.navlinks{display:flex;align-items:center;gap:27px}.navlinks a{text-decoration:none;color:#e6d9f1;font-size:.9rem;font-weight:700;transition:.2s}.navlinks a:hover{color:var(--cyan)}.nav-cta,.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border:0;border-radius:999px;padding:14px 22px;text-decoration:none;font-weight:900;letter-spacing:.01em;transition:transform .2s,box-shadow .2s,filter .2s;cursor:pointer}.nav-cta,.btn-primary{background:linear-gradient(105deg,#ff28b8,#a84cff 55%,#14cfff);color:white;box-shadow:0 0 22px rgba(255,40,184,.3)}.btn-secondary{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:white}.btn:hover,.nav-cta:hover{transform:translateY(-3px);filter:brightness(1.12);box-shadow:0 0 30px rgba(255,40,184,.4)}.menu-toggle{display:none;background:none;color:white;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:1.25rem}
+    .hero{padding:72px 0 86px;min-height:calc(90vh - 76px);display:flex;align-items:center;position:relative}.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(135deg,transparent 0 70px,rgba(255,255,255,.018) 71px 72px)}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:54px;position:relative}.hero-copy{padding:24px 0}.hero h1 .line2{display:block;color:var(--pink);text-shadow:0 0 24px rgba(255,40,184,.6)}.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 25px}.trustline{color:#c9b8dc;font-size:.88rem}.trustline strong{color:var(--gold)}.flyer-frame{position:relative;padding:10px;border-radius:24px;background:linear-gradient(135deg,var(--pink),var(--gold),var(--cyan),var(--purple));box-shadow:0 0 28px rgba(255,40,184,.28),0 24px 80px rgba(0,0,0,.45);transform:rotate(1deg)}.flyer-frame:after{content:"";position:absolute;inset:-8px;border:1px solid rgba(255,255,255,.17);border-radius:29px;pointer-events:none}.flyer-frame img{display:block;width:100%;height:auto;max-height:690px;object-fit:contain;object-position:top;border-radius:15px;background:#08030e}.flyer-caption{text-align:center;color:#e8d9f6;font-size:.78rem;margin:15px 0 0;letter-spacing:.06em}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.glass{background:linear-gradient(145deg,rgba(39,19,60,.88),rgba(17,9,29,.9));border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 18px 50px rgba(0,0,0,.18)}.glass p:last-child{margin-bottom:0}.quote{font-size:1.2rem;line-height:1.7;color:#fff}.quote-mark{font-size:3rem;color:var(--pink);line-height:.7}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.value{padding:22px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.value .symbol{font-size:1.5rem;color:var(--cyan);margin-bottom:10px}.value h3{margin-bottom:7px}.value p{color:var(--muted);font-size:.92rem;margin:0}
+    .audience{background:linear-gradient(180deg,transparent,rgba(99,26,126,.12),transparent)}.audience-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.audience-card{display:flex;gap:17px;align-items:flex-start;padding:24px;border-radius:18px;border:1px solid var(--line);background:rgba(22,11,39,.82)}.audience-card .num{flex:0 0 42px;height:42px;border-radius:13px;display:grid;place-items:center;font-weight:900;color:#12051c;background:linear-gradient(135deg,var(--gold),var(--pink))}.audience-card h3{margin:1px 0 5px}.audience-card p{margin:0;color:var(--muted);font-size:.94rem}.note{margin-top:20px;color:#d8c9e8;font-size:.9rem;border-left:3px solid var(--cyan);padding:8px 0 8px 15px}
+    .contrib{background:radial-gradient(ellipse at 50% 50%,rgba(168,76,255,.14),transparent 60%)}.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.price-card{padding:28px;border-radius:20px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(145deg,rgba(34,16,52,.95),rgba(15,8,26,.95));position:relative;overflow:hidden}.price-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--pink),var(--gold),var(--cyan))}.price-card h3{margin-bottom:8px}.price{font-size:2.3rem;font-weight:950;color:var(--gold);line-height:1.2}.free{color:var(--green);text-shadow:0 0 16px rgba(99,255,114,.25)}.price-card p{color:var(--muted);margin:8px 0 0}.savings{color:var(--gold)!important;font-weight:800}.contribution-foot{margin-top:20px;font-size:.87rem;color:#bdaecc}
+    .contact-box{padding:clamp(30px,6vw,65px);border-radius:28px;text-align:center;background:radial-gradient(ellipse at top,rgba(255,40,184,.2),transparent 55%),linear-gradient(135deg,#1e1031,#10071c);border:1px solid rgba(255,255,255,.2);box-shadow:var(--glow);position:relative;overflow:hidden}.contact-box h2{max-width:700px;margin:12px auto 18px}.contact-box p{color:#e4d6f0;max-width:620px;margin:0 auto 27px}.phone{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:950;color:white;letter-spacing:.04em;display:block;margin:0 0 24px;text-decoration:none;text-shadow:0 0 20px var(--pink)}.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.social-link{padding:12px 18px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);border-radius:999px;text-decoration:none;font-weight:800;transition:.2s}.social-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}.social-empty{color:#b9a9c8;font-size:.9rem}.privacy{font-size:.84rem!important;color:#bdaecc!important;margin-top:22px!important;margin-bottom:0!important}
+    footer{padding:34px 0;border-top:1px solid var(--line);background:rgba(0,0,0,.2)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}.footer-brand{font-weight:950}.footer-brand span{color:var(--pink)}.footer-note{font-size:.84rem;color:#bdaecc;max-width:560px;margin:7px 0 0}.footer-meta{text-align:right;color:#c9bad7;font-size:.85rem}.footer-meta a{color:var(--cyan);text-decoration:none}.legal{font-size:.78rem;color:#9788a8;margin-top:20px}
+    .age-gate{position:fixed;inset:0;z-index:100;background:rgba(5,2,10,.94);backdrop-filter:blur(16px);display:grid;place-items:center;padding:22px;transition:opacity .35s,visibility .35s}.age-gate.hidden{opacity:0;visibility:hidden;pointer-events:none}.age-card{width:min(510px,100%);padding:38px 32px;text-align:center;border-radius:26px;background:linear-gradient(145deg,#24103a,#10071b);border:1px solid rgba(255,255,255,.22);box-shadow:0 0 50px rgba(255,40,184,.22)}.age-badge{width:68px;height:68px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;font-weight:950;color:#16051c;background:linear-gradient(135deg,var(--gold),var(--pink))}.age-card h2{font-size:2rem;margin-bottom:12px}.age-card p{color:#d5c6e2}.age-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}.age-error{color:#ff9adf!important;font-size:.88rem;min-height:1.3em;margin:14px 0 0!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}.hero-copy{padding:0}.flyer-frame{width:min(540px,100%);margin:auto}.hero{padding-top:55px}.navlinks{gap:16px}.navlinks a{font-size:.82rem}}
+    @media(max-width:680px){.wrap{width:min(100% - 30px,560px)}.section{padding:72px 0}.nav{min-height:68px}.menu-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 22px;background:rgba(9,5,18,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 0;font-size:.95rem}.navlinks .nav-cta{margin-top:8px;text-align:center}.brand{font-size:1rem}.hero{min-height:0;padding:54px 0 65px}.hero h1{font-size:clamp(2.65rem,13vw,4.4rem)}.hero-actions .btn{width:100%}.about-grid,.audience-grid,.price-grid{grid-template-columns:1fr}.values{grid-template-columns:1fr}.glass{padding:24px}.audience-card{padding:20px}.contact-box{padding:34px 20px}.footer-inner{display:block}.footer-meta{text-align:left;margin-top:18px}.age-card{padding:32px 22px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-<header><div class="wrap nav">
-<a class="brand" href="#home"><span class="brand-mark">✳</span> OpenCircle</a>
-<nav class="links"><a href="#about">Our community</a><a href="#connect">Connect</a><a href="#events">What's happening</a><a href="#values">Our values</a></nav>
-<a class="nav-cta" href="#join">Say hello <span aria-hidden="true">↗</span></a>
-</div></header>
-<main>
-<section class="hero" id="home"><div class="wrap hero-grid">
-<div><span class="eyebrow">✦ A space to be yourself</span>
-<h1>Find your people.<br><span>Feel at home.</span></h1>
-<p class="lead">A welcoming place for open-minded people to connect, discover community, and celebrate what makes each of us unique.</p>
-<div class="hero-actions"><a class="btn" href="#join">Become part of the circle ↗</a><a class="btn secondary" href="#connect">Explore our links</a></div>
-<div class="micro">Inclusive by nature. Respectful by choice. Connected together.</div></div>
-<div class="visual"><div class="orb"></div><div class="float one">💜 Everyone belongs</div><div class="float two">✨ Real connection starts here</div>
-<div class="panel"><div class="panel-top"><div class="avatar-stack"><span class="avatar">🌈</span><span class="avatar">🧡</span><span class="avatar">💜</span><span class="avatar">🌿</span></div><span class="online">● A welcoming community</span></div>
-<h3>More connection, less searching.</h3><p>Your community links, conversations, and shared interests — brought together in one easy-to-explore space.</p>
-<div class="mini-card"><span class="mini-icon">🤝</span><div><strong>Meet like-minded people</strong><small>Build genuine, respectful connections</small></div></div>
-<div class="mini-card"><span class="mini-icon">💬</span><div><strong>Stay connected</strong><small>Find the channels you already love</small></div></div>
-<div class="mini-card"><span class="mini-icon">🎉</span><div><strong>Discover what's happening</strong><small>Explore community activities and events</small></div></div>
-</div></div></div></section>
-<section id="about"><div class="wrap"><div class="section-head"><span class="kicker">A community for everyone</span><h2>Connection without judgment.</h2><p>OpenCircle is a concept for people who value openness, kindness, and meaningful connections. Come as you are, and treat others with care.</p></div>
-<div class="grid3"><article class="card"><div class="card-icon">🌈</div><h3>Inclusive community</h3><p>A welcoming environment for LGBTQ+ people, allies, and open-minded adults with different identities and experiences.</p></article>
-<article class="card"><div class="card-icon">🫶</div><h3>Shared interests</h3><p>Find spaces centered around conversation, friendship, lifestyle interests, and community connection.</p></article>
-<article class="card"><div class="card-icon">🛡️</div><h3>Respect comes first</h3><p>Consent, privacy, personal boundaries, and respectful behavior are at the heart of every interaction.</p></article></div></div></section>
-<section class="connect" id="connect"><div class="wrap"><div class="section-head"><span class="kicker">One place to connect</span><h2>Your community, all together.</h2><p>Make it easy for visitors to find your official social pages and preferred way to reach you.</p></div>
-<div class="social-grid">
-<a class="social" href="#join" aria-label="Instagram link placeholder"><span class="sicon">◎</span><span><strong>Instagram</strong><small>Add official profile link</small></span></a>
-<a class="social" href="#join" aria-label="Facebook link placeholder"><span class="sicon">f</span><span><strong>Facebook</strong><small>Add official page link</small></span></a>
-<a class="social" href="#join" aria-label="TikTok link placeholder"><span class="sicon">♪</span><span><strong>TikTok</strong><small>Add official profile link</small></span></a>
-<a class="social" href="#join" aria-label="WhatsApp link placeholder"><span class="sicon">☏</span><span><strong>WhatsApp</strong><small>Add community contact link</small></span></a>
-</div><p class="notice">Social buttons are placeholders in this demo and can be connected to Marilyn's official accounts.</p></div></section>
-<section id="events"><div class="wrap"><div class="section-head"><span class="kicker">Stay in the loop</span><h2>Make room for connection.</h2><p>A sample events area to highlight community gatherings, online conversations, and shared experiences.</p></div>
-<div class="event-grid"><article class="card event"><div class="event-date"><small>COMMUNITY</small><b>01</b></div><div><h3>Meet & Connect</h3><p>A sample space for introductions and friendly conversation.</p></div></article>
-<article class="card event"><div class="event-date"><small>ONLINE</small><b>02</b></div><div><h3>Open Conversation</h3><p>A sample online gathering centered on respect and shared interests.</p></div></article></div></div></section>
-<section id="values"><div class="wrap"><div class="banner"><div><h2>Good connections begin with respect.</h2><p>Be kind. Ask first. Respect boundaries. Protect each other's privacy.<br>Help make this a space where people feel safe being themselves.</p></div><a class="btn" href="#join">Let's connect ↗</a></div></div></section>
-<section id="join"><div class="wrap"><div class="section-head"><span class="kicker">Your circle starts here</span><h2>We'd love to hear from you.</h2><p>Interested in the community? Send a note and find out how to stay connected.</p><div style="margin-top:24px"><button class="btn" onclick="openModal()">Get in touch ↗</button></div></div></div></section>
-</main>
-<footer><div class="wrap foot"><div><strong>✳ OpenCircle</strong> &nbsp; A place to connect and belong.</div><div>Concept prototype · Built with care</div></div><div class="wrap notice">Demo only. No accounts, membership records, or messages are stored or transmitted.</div></footer>
-<div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="close" onclick="closeModal()" aria-label="Close">×</button><h3 id="modalTitle">Let's start a conversation.</h3><p>This is a visual demo. The contact form can be connected to a secure service once the project scope is confirmed.</p><form onsubmit="event.preventDefault();document.getElementById('demoMsg').textContent='Thanks! This demo form is not connected yet.';"><label for="name">Your name</label><input class="field" id="name" placeholder="Enter your name" required><label for="email">Email address</label><input class="field" id="email" type="email" placeholder="you@example.com" required><label for="message">Your message</label><textarea class="field" id="message" rows="3" placeholder="Tell us what you'd like to know"></textarea><button class="btn" type="submit">Send message</button><p id="demoMsg" aria-live="polite"></p></form></div></div>
-<script>
-function openModal(){document.getElementById('contactModal').classList.add('show')}
-function closeModal(){document.getElementById('contactModal').classList.remove('show')}
-document.getElementById('contactModal').addEventListener('click',e=>{if(e.target.id==='contactModal')closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-</script>
-</body></html>
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-card">
+      <div class="age-badge">18+</div>
+      <span class="eyebrow">Desires &amp; Pleasures DP</span>
+      <h2 id="ageTitle">Adults only</h2>
+      <p>This website is intended for adults aged 18 and over. Please confirm that you are at least 18 to continue.</p>
+      <div class="age-actions"><button class="btn btn-primary" id="ageYes" type="button">I am 18 or older</button><button class="btn btn-secondary" id="ageNo" type="button">I am under 18</button></div>
+      <p class="age-error" id="ageError" aria-live="polite"></p>
+    </div>
+  </div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Desires and Pleasures DP home">DESIRES <span style="color:var(--pink)">&amp;</span> PLEASURES <b> D P · OPEN-MINDED CONNECTIONS</b></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="navlinks" id="navLinks" aria-label="Main navigation">
+        <a href="#about">Our community</a><a href="#welcome">Who's welcome</a><a href="#contributions">Contributions</a><a href="#social">Connect</a>
+        <a class="nav-cta" href="https://wa.me/12136547811" target="_blank" rel="noopener noreferrer">WhatsApp us ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="home"><div class="wrap hero-grid">
+      <div class="hero-copy reveal"><span class="eyebrow">Love · Respect · Inclusion</span>
+        <h1>Open minds.<span class="line2">Real connections.</span><span class="gradient">Your own pace.</span></h1>
+        <p class="lead">Welcome to Desires &amp; Pleasures DP — a vibrant, welcoming community for open-minded adults interested in meeting like-minded people in a respectful, pressure-free environment.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/12136547811" target="_blank" rel="noopener noreferrer">Connect on WhatsApp <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#about">Discover the community ↓</a></div>
+        <p class="trustline"><strong>18+ adults only</strong> · Consent first · Respect always</p>
+      </div>
+      <div class="reveal"><div class="flyer-frame"><img src="assets/desires-pleasures-flyer.png" alt="Original Desires and Pleasures DP community flyer with neon rainbow colors and event information" loading="eager"></div><p class="flyer-caption">THE ORIGINAL FLYER · THE SAME ENERGY, ONLINE</p></div>
+    </div></section>
+    <section class="section" id="about"><div class="wrap">
+      <div class="section-head reveal"><span class="eyebrow">A little about us</span><h2>A place to connect <span class="gradient">without pressure.</span></h2><p>Good connections begin with feeling welcome, being heard, and having the freedom to decide what feels right for you.</p><div class="neon-rule"></div></div>
+      <div class="about-grid">
+        <article class="glass reveal"><div class="quote-mark">“</div><p class="quote">It's a safe and respectful place where one can carry out their fantasies by meeting other like-minded people that may share something similar or make their fantasies come true. There is no pressure, and you go at your own pace.</p><p class="muted">A community built around openness, mutual respect, and personal choice.</p></article>
+        <article class="glass reveal"><h3 style="color:var(--gold)">Your comfort comes first.</h3><p class="muted">Whether you're curious, experienced, attending with a partner, or coming on your own, you set your boundaries. Every interaction should be voluntary, respectful, and guided by clear, enthusiastic consent.</p><p class="muted">Be considerate of others, respect personal boundaries, and keep private conversations and personal information private unless you have permission to share them.</p></article>
+      </div>
+      <div class="values">
+        <div class="value reveal"><div class="symbol">✧</div><h3>Welcoming</h3><p>Meet open-minded adults and people who may share your interests.</p></div>
+        <div class="value reveal"><div class="symbol">♡</div><h3>Respectful</h3><p>Consent, boundaries, and consideration are essential.</p></div>
+        <div class="value reveal"><div class="symbol">∞</div><h3>Your pace</h3><p>Explore conversation and connection without pressure or expectation.</p></div>
+      </div>
+    </div></section>
+    <section class="section audience" id="welcome"><div class="wrap">
+      <div class="section-head reveal"><span class="eyebrow">Everyone deserves respect</span><h2>Who's <span class="gradient">welcome?</span></h2><p>The audience descriptions below follow the wording and eligibility information provided on the original flyer.</p></div>
+      <div class="audience-grid">
+        <article class="audience-card reveal"><div class="num">01</div><div><h3>Couples</h3><p>Bi &amp; straight, or curious men.</p></div></article>
+        <article class="audience-card reveal"><div class="num">02</div><div><h3>Men</h3><p>Straight or bi men — no facial hair; “sexy only,” as stated on the flyer.</p></div></article>
+        <article class="audience-card reveal"><div class="num">03</div><div><h3>Trans &amp; Passable Trans</h3><p>Welcome, with free admission indicated on the flyer.</p></div></article>
+        <article class="audience-card reveal"><div class="num">04</div><div><h3>CDs &amp; Passable CDs</h3><p>Welcome, with free admission indicated on the flyer.</p></div></article>
+        <article class="audience-card reveal"><div class="num">05</div><div><h3>Single ladies</h3><p>Welcome — the flyer lists couples and single ladies as free.</p></div></article>
+      </div>
+      <p class="note">All visitors must be 18 or older. The flyer also lists “Couples &amp; Single Ladies — FREE!” and “Trans &amp; Passable Trans — FREE!”</p>
+    </div></section>
+    <section class="section contrib" id="contributions"><div class="wrap">
+      <div class="section-head reveal"><span class="eyebrow">Event contribution information</span><h2>Good company. <span class="gradient">Clear details.</span></h2><p>These are the contribution details shown on the supplied flyer. No event date, venue, schedule, or payment method has been provided here.</p></div>
+      <div class="price-grid">
+        <article class="price-card reveal"><h3>Couples &amp; Single Ladies</h3><div class="price free">FREE!</div><p>As stated on the original flyer.</p></article>
+        <article class="price-card reveal"><h3>Single Men</h3><div class="price">$60</div><p>Donation appreciated.</p><p class="savings">Save $20 if you RSVP or prepay.</p></article>
+        <article class="price-card reveal"><h3>Trans &amp; Passable Trans</h3><div class="price free">FREE!</div><p>As stated on the original flyer.</p></article>
+        <article class="price-card reveal"><h3>CDs &amp; Passable CDs</h3><div class="price free">FREE!</div><p>As stated on the original flyer.</p></article>
+      </div>
+      <p class="contribution-foot">The flyer says “Donation Appreciated.” For current event details or clarification, please contact the host directly through WhatsApp.</p>
+    </div></section>
+    <section class="section" id="social"><div class="wrap"><div class="contact-box reveal">
+      <span class="eyebrow">Let's connect, vibe &amp; have a great time together</span><h2>Start a conversation <span class="gradient">on WhatsApp.</span></h2><p>Have a question or want to learn more? Reach out directly. You can ask for the details you need and decide what feels comfortable for you.</p>
+      <a class="phone" href="https://wa.me/12136547811" target="_blank" rel="noopener noreferrer">213-654-7811</a>
+      <a class="btn btn-primary" href="https://wa.me/12136547811" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a>
+      <div style="height:1px;background:var(--line);margin:34px auto 25px;max-width:500px"></div>
+      <h3>Find us on social media</h3><div class="socials" id="socialLinks" aria-label="Social media links"></div><p class="social-empty" id="socialEmpty">Official social media links will appear here when added.</p>
+      <p class="privacy">Please respect consent and personal boundaries. Do not share another person's photos, identity, or private information without their permission. Discretion is valued, but no website can guarantee the privacy of conversations or third-party platforms.</p>
+    </div></div></section>
+  </main>
+  <footer><div class="wrap"><div class="footer-inner"><div><div class="footer-brand">DESIRES <span>&amp;</span> PLEASURES DP</div><p class="footer-note">An open-minded community for adults who value connection, respect, consent, and inclusion — at their own pace.</p></div><div class="footer-meta"><div>WhatsApp: <a href="https://wa.me/12136547811" target="_blank" rel="noopener noreferrer">213-654-7811</a></div><div style="margin-top:6px">Adults only · 18+</div></div></div><div class="legal">© <span id="year"></span> Desires &amp; Pleasures DP. All rights reserved. Participation is always voluntary. Respect every boundary.</div></div></footer>
+  <script>
+    // Add official profile URLs here. Leave a value as an empty string to keep that button hidden.
+    const SOCIAL_LINKS = {
+      facebook: "",
+      instagram: "",
+      tiktok: "",
+      youtube: "",
+      x: ""
+    };
+
+    const ageGate = document.getElementById('ageGate');
+    const ageError = document.getElementById('ageError');
+    if (sessionStorage.getItem('dp-age-confirmed') === 'yes') ageGate.classList.add('hidden');
+    document.getElementById('ageYes').addEventListener('click', () => {
+      sessionStorage.setItem('dp-age-confirmed', 'yes');
+      ageGate.classList.add('hidden');
+      document.getElementById('home').setAttribute('tabindex', '-1');
+      document.getElementById('home').focus({preventScroll:true});
+    });
+    document.getElementById('ageNo').addEventListener('click', () => {
+      ageError.textContent = 'Sorry, this website is intended for adults aged 18 and over.';
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation');
+      menuToggle.textContent = '☰';
+    }));
+
+    const socialNames = {facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',youtube:'YouTube',x:'X'};
+    const socialContainer = document.getElementById('socialLinks');
+    let socialCount = 0;
+    Object.entries(SOCIAL_LINKS).forEach(([key, url]) => {
+      if (typeof url === 'string' && /^https:\/\//i.test(url.trim())) {
+        const link = document.createElement('a');
+        link.className = 'social-link';
+        link.href = url.trim();
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = socialNames[key] || key;
+        socialContainer.appendChild(link);
+        socialCount++;
+      }
+    });
+    if (socialCount) document.getElementById('socialEmpty').hidden = true;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const revealObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12}) : null;
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (revealObserver) revealObserver.observe(el); else el.classList.add('visible');
+    });
+  </script>
+</body>
+</html>
